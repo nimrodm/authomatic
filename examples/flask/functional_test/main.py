@@ -49,5 +49,5 @@ if __name__ == '__main__':
     # http://www.oesmith.co.uk/2011/05/23/pyopenssl-in-a-virtualenv-on-osx.html
 
     # Unix
-    # ???
+    # ln -sf /usr/lib/python2.7/dist-packages/OpenSSL venv/lib/python2.7/
     app.run(debug=True, port=8080, ssl_context='adhoc')
