@@ -74,15 +74,6 @@ def after_install(options, home_dir):
     _add_pth('authomatic', PROJECT_ROOT)
 
     if PYTHON_VERSION == '2.7':
-        _download_and_extract('http://googleappengine.googlecode.com/files/' +
-                              'google_appengine_{0}.zip'.format(GAE_SDK_VERSION),
-                              'bin')
-        _add_pth('gae', '\n'.join([
-                os.path.abspath(os.path.join(home_dir, 'bin/google_appengine/')),
-                'import dev_appserver',
-                # 'dev_appserver.fix_sys_path()',
-            ]))
-
         for example in os.listdir(GAE_EXAMPLES_PATH):
             example_path = os.path.join(GAE_EXAMPLES_PATH, example)
             _link(AUTHOMATIC_PATH, os.path.join(example_path, 'authomatic'))
