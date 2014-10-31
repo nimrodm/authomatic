@@ -1,8 +1,8 @@
 import os
-import urllib
-import zipfile
 import platform
 import sys
+import urllib
+import zipfile
 
 
 PYTHON_VERSION = '{0}.{1}'.format(*sys.version_info)
