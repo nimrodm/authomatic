@@ -20,9 +20,11 @@ PROJECT_ROOT = os.path.abspath(os.path.join(BOOTSTRAP_ROOT, '..'))
 AUTHOMATIC_PATH = os.path.join(PROJECT_ROOT, 'authomatic')
 GAE_EXAMPLES_PATH = os.path.join(PROJECT_ROOT, 'examples/gae')
 
+
 def after_install(options, home_dir):
-    openid_path = os.path.join(home_dir, 'lib/python{0}/site-packages/openid'
-                               .format(PYTHON_VERSION))
+    python_lib_path = os.path.join(home_dir, 'lib',
+                                   'python{0}'.format(PYTHON_VERSION))
+    openid_path = os.path.join(python_lib_path, 'site-packages', 'openid')
     openid_path = os.path.abspath(openid_path)
 
     def _download_and_extract(url, extract_path):
@@ -85,3 +87,12 @@ def after_install(options, home_dir):
             example_path = os.path.join(GAE_EXAMPLES_PATH, example)
             _link(AUTHOMATIC_PATH, os.path.join(example_path, 'authomatic'))
             _link(openid_path, os.path.join(example_path, 'openid'))
+
+    # Symlink pyopenssl path to virtualenv dir
+    try:
+        import OpenSSL
+        _link(os.path.dirname(OpenSSL.__file__),
+              os.path.join(python_lib_path, OpenSSL.__name__))
+    except ImportError:
+        print('WARNING: The PyOpenSSL package '
+              'is not installed on your system!')
