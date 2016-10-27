@@ -321,6 +321,7 @@ class OAuth2(providers.AuthorizationProvider):
             
             self.credentials.token = authorization_code
             
+            self._log(logging.INFO, u'* Elements - 1.')
             request_elements = self.create_request_elements(request_type=self.ACCESS_TOKEN_REQUEST_TYPE,
                                                              credentials=self.credentials,
                                                              url=self.access_token_url,
@@ -328,7 +329,8 @@ class OAuth2(providers.AuthorizationProvider):
                                                              redirect_uri=self.url,
                                                              params=self.access_token_params,
                                                              headers=self.access_token_headers)
-            print(request_elements)
+            self._log(logging.INFO, u'* Elements - 2.')
+            self._log(logging.INFO, u'* Elements list: {0}.'.format(request_elements))
             response = self._fetch(*request_elements)
             self.access_token_response = response
             
