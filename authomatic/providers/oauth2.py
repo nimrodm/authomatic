@@ -328,7 +328,7 @@ class OAuth2(providers.AuthorizationProvider):
                                                              redirect_uri=self.url,
                                                              params=self.access_token_params,
                                                              headers=self.access_token_headers)
-
+            print(request_elements)
             response = self._fetch(*request_elements)
             self.access_token_response = response
             
