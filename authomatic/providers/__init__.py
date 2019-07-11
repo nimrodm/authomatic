@@ -747,7 +747,7 @@ class AuthorizationProvider(BaseProvider):
         
         headers = headers or {}
         
-        self._log(logging.INFO, u'Accessing protected resource {0}.'.format(url))
+        self._log(logging.INFO, u'Accessing xxx protected resource {0}.'.format(url))
         
         request_elements = self.create_request_elements(request_type=self.PROTECTED_RESOURCE_REQUEST_TYPE,
                                                         credentials=self.credentials,
