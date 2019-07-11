@@ -1229,10 +1229,7 @@ class LinkedIn(OAuth2):
     
     user_authorization_url = 'https://www.linkedin.com/uas/oauth2/authorization'
     access_token_url = 'https://www.linkedin.com/uas/oauth2/accessToken'
-    user_info_url = ('https://api.linkedin.com/v2/people/~:'
-                     '(id,first-name,last-name,formatted-name,location,'
-                     'picture-url,public-profile-url,email-address)'
-                     '?format=json')
+    user_info_url = ('api.linkedin.com/v2/me')
 
     user_info_scope = ['r_emailaddress']
 
